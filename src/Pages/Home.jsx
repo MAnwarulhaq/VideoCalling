@@ -10,7 +10,7 @@ const Home = () => {
   }
   return (
     <div id='home'>
-        <input type="text" placeholder="Enter room ID" value={input } onChange={(e)=>setInput(e.target.value)} />
+        <input type="text" placeholder="Enter room ID" value={input} onChange={(e)=>setInput(e.target.value)} />
         <button onClick={handlejoin}>Join Room</button>
     </div>
   )
