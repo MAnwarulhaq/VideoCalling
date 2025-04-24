@@ -1,52 +1,70 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-    background-color: rgb(18, 24, 29);
+
+body {
+  background-color: rgb(18, 24, 29);
 }
-/* Parent container */
+
 #home {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    
-  }
-  
-  /* Input styling */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+
+}
+
+
+input[type="text"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+}
+
+@media screen and (max-width: 768px) {
   input[type="text"] {
-    width: 100%;
-    max-width: 400px;
-    padding: 12px 16px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
-    outline: none;
-    transition: border-color 0.3s ease;
+    width: 90%;
   }
-  
-  input[type="text"]:focus {
-    border-color: #007bff;
-  }
-  
-  /* Mobile responsive */
-  @media screen and (max-width: 768px) {
-    input[type="text"] {
-      width: 90%;
-    }
-  }
-  
-button{
-    border: none;
-    padding: 5px 10px;
-    background-color: aqua;
-    color: black;
-    border-radius: 10px;
-    font-size: 20px;
+}
+
+button {
+  border: none;
+  padding: 5px 10px;
+  background-color: aqua;
+  color: black;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.talktime-logo {
+
+  font-size: 50px;
+  /* ✅ Adjust gradient text size */
+  background: linear-gradient(to right, rgb(66, 180, 205), white);
+
+  background-clip: text;
+  color: transparent;
+}
+p{
+  font-size: 20px;
+  /* ✅ Adjust gradient text size */
+  background: linear-gradient(to right, rgb(58, 63, 97), white);
+
+  background-clip: text;
+  color: transparent;
 }
