@@ -1,21 +1,58 @@
-import React from 'react'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useRef } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 
-const Home = () => {
-  let navigate = useNavigate()
-  const [input, setInput] = useState('')
-  function handlejoin() {
-    navigate(`/room/${input}`)
-  }
+const VideoRoom = () => {
+  const { roomId } = useParams();
+  const location = useLocation();
+  const meetingContainer = useRef(null);
+
+  // Get user's name from URL query string
+  const queryParams = new URLSearchParams(location.search);
+  const userName = queryParams.get('name') || 'Guest';
+
+  useEffect(() => {
+    const appID = 1127476781;
+    const serverSecret = "f2cbe57ada6a7e97266bbb41d25e40f5";
+    const userID = Date.now().toString();
+
+    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
+      appID,
+      serverSecret,
+      roomId,
+      userID,
+      userName
+    );
+
+    const zp = ZegoUIKitPrebuilt.create(kitToken);
+    zp.joinRoom({
+      container: meetingContainer.current,
+      sharedLinks: [
+        {
+          name: 'Copy Link',
+          url: `${window.location.origin}/room/${roomId}`,
+        },
+      ],
+      scenario: {
+        mode: ZegoUIKitPrebuilt.OneONoneCall,
+      },
+    });
+  }, [roomId, userName]);
+
   return (
-    <div id='home'>
-      <h1 className='talktime-logo'>TalkTime</h1>
-      <p className="text-gray-600 mb-6">Enter a room ID to start video calling!</p>
-      <input type="text" placeholder="Enter room ID" value={input} onChange={(e) => setInput(e.target.value)} />
-      <button onClick={handlejoin}>Join Room</button>
+    <div
+      style={{
+        width: '100vw',
+        height: '100vh',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        backgroundColor: '#000',
+      }}
+    >
+      <div ref={meetingContainer} style={{ width: '100%', height: '100%' }} />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default VideoRoom;
