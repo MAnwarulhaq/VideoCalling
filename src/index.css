@@ -6,25 +6,42 @@
 body{
     background-color: rgb(18, 24, 29);
 }
-#home{
-    width: 100%;
+/* Parent container */
+#home {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 20px;
-
-}
-input{
-    outline: none  ;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    width: 400px;
-    font-size: 20px;
-
-}
+    padding: 20px;
+    
+  }
+  
+  /* Input styling */
+  input[type="text"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus {
+    border-color: #007bff;
+  }
+  
+  /* Mobile responsive */
+  @media screen and (max-width: 768px) {
+    input[type="text"] {
+      width: 90%;
+    }
+  }
+  
 button{
     border: none;
     padding: 5px 10px;
