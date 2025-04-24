@@ -12,7 +12,7 @@ const VideoRoom = () => {
 
   useEffect(() => {
     const appID = 1234567890; // Replace with your real App ID
-    const serverSecret = "your_real_server_secret"; // Replace this
+    const serverSecret =  "f2cbe57ada6a7e97266bbb41d25e40f5"; // Replace this
     const userID = Date.now().toString();
 
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
